@@ -1,5 +1,7 @@
 import pytest
-from linked_lists.remove_kth_to_last_node import Node, remove_kth_to_last_node
+
+from linked_lists.node import Node
+from linked_lists.remove_kth_to_last_node import remove_kth_to_last_node
 
 
 def build_linked_list(values):

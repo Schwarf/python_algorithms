@@ -1,37 +1,29 @@
 from typing import Optional
 
+from linked_lists.node import Node
+
+
 # Given the head of a linked list, remove the nth node from the end of the list and return its head.
 
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-
 def remove_kth_to_last_node(head: Node, k: int) -> Node:
-    # 'front' and 'back' pointers
-    front = back = head
+    # 'fast' and 'slow' pointers
+    fast = slow = head
 
-    # Move 'front' pointer k steps ahead
+    # Move 'fast' pointer k steps ahead
     for _ in range(k):
-        if front is None:
+        if fast is None:
             return head  # k is larger than the length of the list
-        front = front.next
+        fast = fast.next
 
-    # If 'front' reaches the end, remove the head node
-    if front is None:
+    # If 'fast' reaches the end, remove the head node
+    if fast is None:
         return head.next
 
-    # Move both pointers until front reaches the end
-    pre_back = back
-    while front:
-        front = front.next
-        pre_back = back
-        back = back.next
+    while fast.next:
+        fast = fast.next
+        slow = slow.next
 
-
-    pre_back.next = back.next
+    slow.next = slow.next.next
 
     return head
-
