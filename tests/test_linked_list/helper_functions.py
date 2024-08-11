@@ -3,6 +3,8 @@ from linked_lists.node import Node
 
 def build_linked_list(values):
     """ Helper function to build a linked list from a list of values. """
+    if not values:
+        return None
     head = Node(values[0])
     current = head
     for value in values[1:]:
