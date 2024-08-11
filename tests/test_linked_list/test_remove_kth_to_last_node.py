@@ -1,26 +1,5 @@
-import pytest
-
-from linked_lists.node import Node
 from linked_lists.remove_kth_to_last_node import remove_kth_to_last_node
-
-
-def build_linked_list(values):
-    """ Helper function to build a linked list from a list of values. """
-    head = Node(values[0])
-    current = head
-    for value in values[1:]:
-        current.next = Node(value)
-        current = current.next
-    return head
-
-
-def list_to_values(head):
-    """ Helper function to convert linked list back to a list of values for easy comparison. """
-    values = []
-    while head:
-        values.append(head.data)
-        head = head.next
-    return values
+from tests.test_linked_list.helper_functions import build_linked_list, list_to_values
 
 
 def test_remove_2nd_to_last_node():
