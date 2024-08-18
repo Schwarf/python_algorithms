@@ -13,7 +13,7 @@ def can_reach_last_index(jump_distance: List) -> bool:
     if jump_distance[0] == 0:
         return False
     current_position = n - 1
-    for current_index in range(n - 1, 0, -1):
+    for current_index in range(n - 1, -1, -1):
         if current_index + jump_distance[current_index] >= current_position:
             current_position = current_index
 
