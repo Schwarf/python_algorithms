@@ -18,3 +18,29 @@ def valid_triples(input_array: List[int]) -> int:
                     count += 1
     return count
 
+
+def valid_triples_dp(input_array: List[int]) -> int:
+    n = len(input_array)
+    count_smaller_left = [0] * n
+    count_greater_left = [0] * n
+    count_greater_right = [0] * n
+    count_smaller_right = [0] * n
+    for i in range(1, n):
+        for j in range(0, i):
+            if input_array[j] < input_array[i]:
+                count_smaller_left[i] += 1
+            if input_array[j] > input_array[i]:
+                count_greater_left[i] += 1
+
+    for i in range(n - 2, -1, -1):
+        for j in range(i + 1, n):
+            if input_array[j] > input_array[i]:
+                count_greater_right[i] += 1
+            if input_array[j] < input_array[i]:
+                count_smaller_right[i] += 1
+    count = 0
+    for i in range(1, n - 1):
+        count += count_smaller_left[i] * count_greater_right[i]
+        count += count_greater_left[i] * count_smaller_right[i]
+
+    return count
