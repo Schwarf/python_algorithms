@@ -10,7 +10,7 @@ def count_unique_bst_recursive(n: int):
     # 1..n can be the root value we multiply the number of left-values and right-values for each i and add them up.
     count = 0
     for i in range(1, n + 1):
-        count = count_unique_bst_recursive(i - 1) * count_unique_bst_recursive(n - i)
+        count += count_unique_bst_recursive(i - 1) * count_unique_bst_recursive(n - i)
     return count
 
 
