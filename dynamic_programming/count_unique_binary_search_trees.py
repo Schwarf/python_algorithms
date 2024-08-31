@@ -6,7 +6,7 @@ def count_unique_bst_recursive(n: int):
     if n == 0 or n == 1:
         return 1
     # The key observation is for a binary search: If you pick a number i with 1 <= i <= n as root-value then the
-    # left treehas i-1 values (1.. i-1) and the right tree has n-i values (i+1..n). Now since each value between
+    # left tree has i-1 values (1.. i-1) and the right tree has n-i values (i+1..n). Now since each value between
     # 1..n can be the root value we multiply the number of left-values and right-values for each i and add them up.
     count = 0
     for i in range(1, n + 1):
