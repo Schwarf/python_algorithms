@@ -12,3 +12,20 @@ def cut_rod_recursive(length: int, prices: List[int]) -> int:
         total = max(total, current_price + cut_rod_recursive(length-i, prices))
     return total
 
+
+def memoization(length: int, prices: List[int], memo: List[int]) -> int:
+    if length <= 0:
+        return 0
+    if memo[length] != -1:
+        return memo[length]
+    total = 0
+    for i in range(1, length+1):
+        current_price = prices[i] if i < len(prices) else 0
+        total = max(total, current_price + cut_rod_recursive(length-i, prices))
+        memo[length] = total
+    return memo[length]
+
+
+def cut_rod_top_down(length: int, prices: List[int]) -> int:
+    memo = [-1]*(length+1)
+    return memoization(length, prices, memo)
