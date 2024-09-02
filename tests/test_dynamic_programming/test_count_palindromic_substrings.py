@@ -1,5 +1,7 @@
-from dynamic_programming.count_palindromic_substrings import count_palindromic_substrings_no_dp, count_palindromic_substrings
 import pytest
+
+from dynamic_programming.count_palindromic_substrings import count_palindromic_substrings_no_dp, \
+    count_palindromic_substrings
 
 test_cases = [
     ("abc", 3),
@@ -16,6 +18,7 @@ test_cases = [
 def test_count_palindromic_substrings_no_dp(string: str, expected_result: int):
     assert expected_result == count_palindromic_substrings_no_dp(string)
 
+
 ##################################################################################################################
 ##################################################################################################################
 ##################################################################################################################
@@ -24,4 +27,3 @@ def test_count_palindromic_substrings_no_dp(string: str, expected_result: int):
 @pytest.mark.parametrize("string, expected_result", test_cases)
 def test_count_palindromic_substrings(string: str, expected_result: int):
     assert expected_result == count_palindromic_substrings(string)
-

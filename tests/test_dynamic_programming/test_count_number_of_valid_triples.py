@@ -1,56 +1,28 @@
+from typing import List
+
+import pytest
+
 from dynamic_programming.count_number_of_valid_triples import valid_triples, valid_triples_dp
 
-
-def test_valid_triples():
-    input = [2, 5, 3, 4, 1]
-    expected_result = 3
-    assert expected_result == valid_triples(input)
-
-
-def test_valid_triples2():
-    input = [2, 1, 3]
-    expected_result = 0
-    assert expected_result == valid_triples(input)
+test_cases = [
+    ([2, 5, 3, 4, 1], 3),
+    ([2, 1, 3], 0),
+    ([1, 2, 3, 4], 4),
+    ([89, 61, 13, 36, 37, 39, 97, 76, 84, 18, 12, 24, 71, 33, 44, 85, 70, 82, 15, 74, 35, 66, 59,
+      8, 3, 96, 30, 16, 41, 7, 10, 68, 92, 83, 95, 77, 9, 14, 81, 88, 38], 3514)
+]
 
 
-def test_valid_triples3():
-    input = [1, 2, 3, 4]
-    expected_result = 4
-    assert expected_result == valid_triples(input)
+@pytest.mark.parametrize("input_array, expected_result", test_cases)
+def test_valid_triples(input_array: List[int], expected_result: int):
+    assert expected_result == valid_triples(input_array)
 
-
-def test_valid_triples4():
-    input = [89, 61, 13, 36, 37, 39, 97, 76, 84, 18, 12, 24, 71, 33, 44, 85, 70, 82, 15, 74, 35, 66, 59,
-                           8, 3, 96, 30, 16, 41, 7, 10, 68, 92, 83, 95, 77, 9, 14, 81, 88, 38]
-    expected_result = 3514
-    assert expected_result == valid_triples(input)
 
 ###################################################################################
 ###################################################################################
 ###################################################################################
 
 
-def test_valid_triples_dp():
-    input = [2, 5, 3, 4, 1]
-    expected_result = 3
-    assert expected_result == valid_triples_dp(input)
-
-
-def test_valid_triples_dp2():
-    input = [2, 1, 3]
-    expected_result = 0
-    assert expected_result == valid_triples_dp(input)
-
-
-def test_valid_triples_dp3():
-    input = [1, 2, 3, 4]
-    expected_result = 4
-    assert expected_result == valid_triples_dp(input)
-
-
-def test_valid_triples_dp4():
-    input = [89, 61, 13, 36, 37, 39, 97, 76, 84, 18, 12, 24, 71, 33, 44, 85, 70, 82, 15, 74, 35, 66, 59,
-                           8, 3, 96, 30, 16, 41, 7, 10, 68, 92, 83, 95, 77, 9, 14, 81, 88, 38]
-    expected_result = 3514
-    assert expected_result == valid_triples_dp(input)
-
+@pytest.mark.parametrize("input_array, expected_result", test_cases)
+def test_valid_triples_dp(input_array: List[int], expected_result: int):
+    assert expected_result == valid_triples_dp(input_array)

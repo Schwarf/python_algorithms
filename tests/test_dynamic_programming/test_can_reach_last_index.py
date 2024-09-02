@@ -1,31 +1,18 @@
+from typing import List
+
+import pytest
+
 from dynamic_programming.can_reach_last_index import can_reach_last_index
 
-
-def test_can_reach_last_index_true():
-    input = [2, 3, 1, 1, 4]
-    result = can_reach_last_index(input)
-    assert result is True
-
-
-def test_can_reach_last_index_false():
-    input = [3, 2, 1, 0, 4]
-    result = can_reach_last_index(input)
-    assert result is False
+test_cases = [
+    ([2, 3, 1, 1, 4], True),
+    ([3, 2, 1, 0, 4], False),
+    ([0, 3, 1, 1, 4], False),
+    ([4, 0, 0, 0, 0], True),
+    ([0], True)
+]
 
 
-def test_can_reach_last_index_false2():
-    input = [0, 3, 1, 1, 4]
-    result = can_reach_last_index(input)
-    assert result is False
-
-    
-def test_can_reach_last_index_true2():
-    input = [4, 0, 0, 0, 0]
-    result = can_reach_last_index(input)
-    assert result is True
-
-
-def test_can_reach_last_index_true3():
-    input = [0]
-    result = can_reach_last_index(input)
-    assert result is True
+@pytest.mark.parametrize("jump_distances, can_reach_end", test_cases)
+def test_can_reach_last_index(jump_distances: List[int], can_reach_end: bool):
+    assert can_reach_last_index(jump_distances) is can_reach_end

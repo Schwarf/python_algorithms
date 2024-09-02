@@ -1,5 +1,6 @@
-from dynamic_programming.count_ways_2D import count_ways_in_2d
 import pytest
+
+from dynamic_programming.count_ways_2D import count_ways_in_2d
 
 test_cases = [(3, 7, 28),
               (3, 2, 3),

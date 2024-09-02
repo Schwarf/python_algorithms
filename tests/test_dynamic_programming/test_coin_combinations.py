@@ -1,33 +1,30 @@
+from typing import List
+
+import pytest
+
 from dynamic_programming.coin_combinations import coin_combinations_classic, coin_combinations_top_down, \
     coin_combinations_bottom_up
 
-
-def test_coin_combinations_classic1():
-    input = [1, 2, 5]
-    amount = 5
-    expected_result = 4
-    assert coin_combinations_classic(input, amount) is expected_result
-
-
-def test_coin_combinations_classic2():
-    input = [5]
-    amount = 4
-    expected_result = 0
-    assert coin_combinations_classic(input, amount) == expected_result
+test_cases = [
+    ([1, 2, 5], 5, 4),
+    ([5], 4, 0),
+    ([1], 7, 1),
+    ([1, 2, 5], 500, 12701)
+]
 
 
-def test_coin_combinations_classic3():
-    input = [1]
-    amount = 7
-    expected_result = 1
-    assert coin_combinations_classic(input, amount) == expected_result
+@pytest.mark.parametrize("coins, amount, expected_result", test_cases)
+def test_coin_combinations_classic(coins: List[int], amount: int, expected_result: int):
+    assert coin_combinations_classic(coins, amount) == expected_result
 
 
-def test_coin_combinations_classic4():
-    input = [1, 2, 5]
-    amount = 500
-    expected_result = 12701
-    assert coin_combinations_classic(input, amount) == expected_result
+###################################################################################
+###################################################################################
+###################################################################################
+
+@pytest.mark.parametrize("coins, amount, expected_result", test_cases)
+def test_coin_combinations_top_down(coins: List[int], amount: int, expected_result: int):
+    assert coin_combinations_top_down(coins, amount) == expected_result
 
 
 ###################################################################################
@@ -35,62 +32,6 @@ def test_coin_combinations_classic4():
 ###################################################################################
 
 
-def test_coin_combinations_top_down1():
-    input = [1, 2, 5]
-    amount = 5
-    expected_result = 4
-    assert coin_combinations_top_down(input, amount) is expected_result
-
-
-def test_coin_combinations_top_down2():
-    input = [5]
-    amount = 4
-    expected_result = 0
-    assert coin_combinations_top_down(input, amount) == expected_result
-
-
-def test_coin_combinations_top_down3():
-    input = [1]
-    amount = 7
-    expected_result = 1
-    assert coin_combinations_top_down(input, amount) == expected_result
-
-
-def test_coin_combinations_top_down4():
-    input = [1, 2, 5]
-    amount = 500
-    expected_result = 12701
-    assert coin_combinations_top_down(input, amount) == expected_result
-
-
-###################################################################################
-###################################################################################
-###################################################################################
-
-
-def test_coin_combinations_bottom_up1():
-    input = [1, 2, 5]
-    amount = 5
-    expected_result = 4
-    assert coin_combinations_classic(input, amount) is expected_result
-
-
-def test_coin_combinations_bottom_up2():
-    input = [5]
-    amount = 4
-    expected_result = 0
-    assert coin_combinations_bottom_up(input, amount) == expected_result
-
-
-def test_coin_combinations_bottom_up3():
-    input = [1]
-    amount = 7
-    expected_result = 1
-    assert coin_combinations_bottom_up(input, amount) == expected_result
-
-
-def test_coin_combinations_bottom_up4():
-    input = [1, 2, 5]
-    amount = 500
-    expected_result = 12701
-    assert coin_combinations_bottom_up(input, amount) == expected_result
+@pytest.mark.parametrize("coins, amount, expected_result", test_cases)
+def test_coin_combinations_bottom_up(coins: List[int], amount: int, expected_result: int):
+    assert coin_combinations_bottom_up(coins, amount) == expected_result
