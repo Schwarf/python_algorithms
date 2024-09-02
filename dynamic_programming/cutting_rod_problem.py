@@ -33,9 +33,9 @@ def cut_rod_top_down(length: int, prices: List[int]) -> int:
 
 def cut_rod_bottom_up(length: int, prices: List[int]) -> int:
     dp = [0]*(length+1)
-    for l in range(length+1):
-        for i in range(l+1):
+    for size in range(length+1):
+        for i in range(size+1):
             current_price = prices[i] if i < len(prices) else 0
-            dp[l] = max(dp[l], dp[l-i] + current_price)
+            dp[size] = max(dp[size], dp[size-i] + current_price)
     return dp[length]
 
