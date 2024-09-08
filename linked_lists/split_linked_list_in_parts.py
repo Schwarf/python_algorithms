@@ -1,6 +1,6 @@
 from typing import List
 
-from node import Node
+from linked_lists.node import Node
 
 
 def split_linked_list_in_parts(head: Node, k: int) -> List[Node]:
@@ -20,6 +20,7 @@ def split_linked_list_in_parts(head: Node, k: int) -> List[Node]:
         for j in range(nodes_per_list + add):
             previous = current
             current = current.next
+        additional_node -= 1
         if previous:
             previous.next = None
 
