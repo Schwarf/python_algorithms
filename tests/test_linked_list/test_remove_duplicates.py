@@ -1,74 +1,24 @@
+from typing import List
+
 from linked_lists.remove_duplicates import remove_duplicates, remove_duplicates2
 from tests.test_linked_list.helper_functions import build_linked_list, list_to_values
+import pytest
+
+test_cases = [([1, 2, 3, 4, 5, 5], [1, 2, 3, 4, 5]),
+              ([1, 2, 2, 3, 2, 4], [1, 2, 3, 4]),
+              ( [1, 1, 1, 1, 1, 1], [1])]
 
 
-def test_remove_duplicate_in_last_node():
-    # Create a linked list from a list of values
-    values = [1, 2, 3, 4, 5, 5]
-    head = build_linked_list(values)
-
-    # Remove the 2nd to last node
+@pytest.mark.parametrize("list_input, expected_result", test_cases)
+def test_remove_duplicate(list_input: List[int], expected_result: List[int]):
+    head = build_linked_list(list_input)
     modified_head = remove_duplicates(head)
-
-    # Check the result
-    assert list_to_values(modified_head) == [1, 2, 3, 4, 5]
+    assert list_to_values(modified_head) == expected_result
 
 
-def test_remove_three_duplicates():
-    # Create a linked list from a list of values
-    values = [1, 2, 2, 3, 2, 4]
-    head = build_linked_list(values)
-
-    # Remove the 2nd to last node
-    modified_head = remove_duplicates(head)
-
-    # Check the result
-    assert list_to_values(modified_head) == [1, 2, 3, 4]
-
-
-def test_remove_all_but_head():
-    # Create a linked list from a list of values
-    values = [1, 1, 1, 1, 1, 1]
-    head = build_linked_list(values)
-
-    # Remove the 2nd to last node
-    modified_head = remove_duplicates(head)
-
-    # Check the result
-    assert list_to_values(modified_head) == [1]
-
-
-def test_remove_duplicate_in_last_node2():
-    # Create a linked list from a list of values
-    values = [1, 2, 3, 4, 5, 5]
-    head = build_linked_list(values)
-
-    # Remove the 2nd to last node
+@pytest.mark.parametrize("list_input, expected_result", test_cases)
+def test_remove_duplicate2(list_input: List[int], expected_result: List[int]):
+    head = build_linked_list(list_input)
     modified_head = remove_duplicates2(head)
+    assert list_to_values(modified_head) == expected_result
 
-    # Check the result
-    assert list_to_values(modified_head) == [1, 2, 3, 4, 5]
-
-
-def test_remove_three_duplicates2():
-    # Create a linked list from a list of values
-    values = [1, 2, 2, 3, 2, 4]
-    head = build_linked_list(values)
-
-    # Remove the 2nd to last node
-    modified_head = remove_duplicates2(head)
-
-    # Check the result
-    assert list_to_values(modified_head) == [1, 2, 3, 4]
-
-
-def test_remove_all_but_head2():
-    # Create a linked list from a list of values
-    values = [1, 1, 1, 1, 1, 1]
-    head = build_linked_list(values)
-
-    # Remove the 2nd to last node
-    modified_head = remove_duplicates2(head)
-
-    # Check the result
-    assert list_to_values(modified_head) == [1]
